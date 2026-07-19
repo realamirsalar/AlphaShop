@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="AlphaShop.Application/AlphaShop.Application.csproj" />
+  <Project Path="AlphaShop.Domain/AlphaShop.Domain.csproj" />
+  <Project Path="AlphaShop.Infrastructure/AlphaShop.Infrastructure.csproj" />
+  <Project Path="AlphaShop.Web/AlphaShop.Web.csproj" />
+</Solution>
