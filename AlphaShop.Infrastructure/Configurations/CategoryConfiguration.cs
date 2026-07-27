@@ -15,7 +15,7 @@ namespace AlphaShop.Infrastructure.Configurations
 
             builder.Property(x => x.Name).IsRequired().HasMaxLength(100);
 
-            builder.HasMany(x => x.Categories).WithOne().HasForeignKey(x => x.ParentId);
+            builder.HasMany(x => x.Categories).WithOne(x =>x.ParentCategory).HasForeignKey(x => x.ParentId);
         }
     }
 }

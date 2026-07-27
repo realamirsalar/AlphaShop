@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AlphaShop.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260719130614_AddCategoryToDb")]
+    [Migration("20260723061240_AddCategoryToDb")]
     partial class AddCategoryToDb
     {
         /// <inheritdoc />
@@ -40,15 +40,10 @@ namespace AlphaShop.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int?>("ParentCategoryId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("ParentId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ParentCategoryId");
 
                     b.HasIndex("ParentId");
 
@@ -58,10 +53,6 @@ namespace AlphaShop.Infrastructure.Migrations
             modelBuilder.Entity("AlphaShop.Domain.Entities.Category", b =>
                 {
                     b.HasOne("AlphaShop.Domain.Entities.Category", "ParentCategory")
-                        .WithMany()
-                        .HasForeignKey("ParentCategoryId");
-
-                    b.HasOne("AlphaShop.Domain.Entities.Category", null)
                         .WithMany("Categories")
                         .HasForeignKey("ParentId");
 

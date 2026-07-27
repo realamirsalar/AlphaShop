@@ -1,0 +1,63 @@
+﻿@model CategoryVM
+
+<header class="page-header page-header-dark bg-gradient-primary-to-secondary mb-4">
+    <div class="container-xl px-4">
+        <div class="page-header-content pt-4">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto mt-4">
+                    <h1 class="page-header-title">
+                        <div class="page-header-icon"><i class="bx bx-file-blank"></i></div>
+                        به روز رسانی دسته بندی @Model.Name
+                    </h1>
+                    <div class="page-header-subtitle">در این صفحه میتوانید یک دسته بندی را به روز رسانی کنید.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container-xl px-4">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div id="solid">
+                <div class="card mb-4">
+                    <div class="card-header">به روز رسانی دسته بندی</div>
+                    <div class="card-body">
+                        <div class="sbp-preview">
+                            <div class="sbp-preview-content">
+                                <form method="post">
+                                    <input type="hidden" asp-for="Id" />
+
+                                    <div class="mb-3">
+                                        <label asp-for="Name">نام دسته بندی</label>
+                                        <input asp-for="Name" class="form-control form-control-solid" placeholder="لطفا نام دسته بندی را وارد کنید...">
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label asp-for="DisplayOrder">اولویت نمایش</label>
+                                        <input asp-for="DisplayOrder" class="form-control form-control-solid" placeholder="ترتیب نمایش دسته بندی را وارد کنید ...">
+                                        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="pb-3" asp-for="ParentId">انتخاب دسته بندی</label>
+                                        <select asp-for="ParentId" asp-items="Model.ParentLists" class="form-select" aria-label="Default select example">
+                                            <option value="" selected>--سر دسته--</option>
+
+                                        </select>
+                                    </div>
+
+                                    <button class="btn btn-success"><i class="bx bx-check-circle"></i>ثبت اطلاعات</button>
+                                    <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="btn btn-danger">بازگشت</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section AdminScripts {
+    <partial name="_ValidationScriptsPartial" />
+}

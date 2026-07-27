@@ -14,5 +14,6 @@ namespace AlphaShop.Domain.Entities
         public int? ParentId { get; set; }
         public Category ParentCategory { get; set; }
         public IEnumerable<Category> Categories { get; set; }
+
     }
 }

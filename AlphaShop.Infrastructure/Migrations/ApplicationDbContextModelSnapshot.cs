@@ -37,15 +37,10 @@ namespace AlphaShop.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int?>("ParentCategoryId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("ParentId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ParentCategoryId");
 
                     b.HasIndex("ParentId");
 
@@ -55,10 +50,6 @@ namespace AlphaShop.Infrastructure.Migrations
             modelBuilder.Entity("AlphaShop.Domain.Entities.Category", b =>
                 {
                     b.HasOne("AlphaShop.Domain.Entities.Category", "ParentCategory")
-                        .WithMany()
-                        .HasForeignKey("ParentCategoryId");
-
-                    b.HasOne("AlphaShop.Domain.Entities.Category", null)
                         .WithMany("Categories")
                         .HasForeignKey("ParentId");
 

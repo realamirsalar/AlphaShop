@@ -23,5 +23,38 @@ namespace AlphaShop.Application.Services.Implementations
             _categoryRepository.CreateCateory(category);
             _unitOfWork.Save();
         }
+
+        public bool DeleteCategory(int id)
+        {
+            var category = GetByIdCategory(id);
+            if (category == null)
+            {
+                return false;
+            }
+            _categoryRepository.DeleteCategory(category);
+            _unitOfWork.Save();
+            return true;
+        }
+
+        public List<Category> GetAllCategories()
+        {
+            return _categoryRepository.GetAllCategories();
+        }
+
+        public Category GetByIdCategory(int id)
+        {
+            return _categoryRepository.GetCategory(id);
+        }
+
+        public List<Category> GetParntCategories()
+        {
+            return _categoryRepository.GetParsntCategories();
+        }
+
+        public void UpdateCategory(Category category)
+        {
+            _categoryRepository.UpdateCategory(category);
+            _unitOfWork.Save();
+        }
     }
 }
