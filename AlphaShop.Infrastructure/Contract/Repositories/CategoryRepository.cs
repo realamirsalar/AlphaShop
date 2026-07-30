@@ -19,6 +19,8 @@ namespace AlphaShop.Infrastructure.Contract.Repositories
 
         public void CreateCateory(Category category)
         {
+            //DbSet<Category> set = _db.Set<Category>();
+            //set.Add(category);
             _db.Categories.Add(category);
         }
 
@@ -29,7 +31,7 @@ namespace AlphaShop.Infrastructure.Contract.Repositories
 
         public List<Category> GetAllCategories()
         {
-            return _db.Categories.ToList();
+            return _db.Categories.Include(c => c.Categories).ToList();
         }
 
         public Category GetCategory(int id)

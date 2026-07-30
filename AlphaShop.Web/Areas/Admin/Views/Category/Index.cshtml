@@ -1,7 +1,9 @@
 ﻿@model List<Category>
 @{
     int i = 1;
+    ViewBag.Title = "دسته بندی";
 }
+<partial name="_Notification" />
 <header class="page-header page-header-dark bg-gradient-custom-to-custom pb-10 is-rtl">
     <div class="container-xl px-4">
         <div class="page-header-content pt-4">
@@ -46,18 +48,54 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    @foreach(var category in Model)
+                    @foreach (var category in Model.Where(c => c.ParentId == null || c.ParentId == 0))
                     {
                         <tr>
-                        <td>@i</td>
-                        <td>@category.Name</td>
-                        <td>@category.DisplayOrder</td>
-                        <td>
+                            <td>@i</td>
+                            <td>@category.Name</td>
+                            <td>@category.DisplayOrder</td>
+                            <td>
                                 <a class="btn btn-warning" asp-area="Admin" asp-controller="Category" asp-action="Update" asp-route-id="@category.Id">آپدیت</a>
                                 <a class="btn btn-danger" asp-area="Admin" asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id">حذف</a>
-                        </td>
-                           
-                        </tr> i++;
+                            </td>
+                        </tr>
+                        if(category.Categories.Count()!= 0)
+                        {
+                            
+                        <tr>
+                           <td colspan="12">
+                                <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <td>#</td>
+                                        <th>نام</th>
+                                        <th>اولویت نمایش</th>
+                                        <th>عملیات</th>
+
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    @foreach (var childe in Model.Where(c => c.ParentId == category.Id))
+                                    {
+                                        <tr>
+                                            <td>@i</td>
+                                            <td>@category.Name</td>
+                                            <td>@category.DisplayOrder</td>
+                                            <td>
+                                                <a class="btn btn-warning" asp-area="Admin" asp-controller="Category" asp-action="Update" asp-route-id="@category.Id">آپدیت</a>
+                                                <a class="btn btn-danger" asp-area="Admin" asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id">حذف</a>
+                                            </td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                                </table>
+                            </td>
+                       </tr>
+                            i++;
+                        }
+
                     }
                 </tbody>
             </table>

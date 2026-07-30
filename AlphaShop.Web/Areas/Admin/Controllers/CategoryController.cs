@@ -45,7 +45,9 @@ namespace AlphaShop.Web.Areas.Admin.Controllers
                     ParentId = categoryVM.ParentId
                 };
                 _categoryService.CreateCategory(category);
+                TempData["success"] = "دسته بندی با موفقیت افزوده شد!";
                 return RedirectToAction(nameof(Index));
+
             }
             categoryVM.ParentLists = _categoryService.GetParntCategories().Select(c => new SelectListItem()
             {
@@ -91,6 +93,7 @@ namespace AlphaShop.Web.Areas.Admin.Controllers
                     ParentId = categoryVM.ParentId
                 };
                 _categoryService.UpdateCategory(category);
+                TempData["success"] = "دسته بندی با موفقیت ویرایش شد!";
                 return RedirectToAction(nameof(Index));
             }
             categoryVM.ParentLists = _categoryService.GetParntCategories().Select(c => new SelectListItem()
@@ -128,8 +131,11 @@ namespace AlphaShop.Web.Areas.Admin.Controllers
                 if (result)
                 {
 
-                    return RedirectToAction(nameof(Index));
+                    TempData["success"] = "دسته بندی با موفقیت حذف شد!";
                 }
+
+                TempData["error"] = "دسته بندی مورد نظر پیدا نشد!";
+                return RedirectToAction(nameof(Index));
             }
             return View(categoryVM);
         }
