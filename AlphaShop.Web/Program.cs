@@ -1,6 +1,7 @@
 using AlphaShop.Application;
 using AlphaShop.Application.Common.Interfaces;
 using AlphaShop.Infrastructure;
+using AlphaShop.Web.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddInfrastructuerServices(builder.Configuration);
 builder.Services.AddApplicationServices();
+
+builder.Services.AddAutoMapper(cfg => { }, typeof(MappingProfile).Assembly);
 
 var app = builder.Build();
 

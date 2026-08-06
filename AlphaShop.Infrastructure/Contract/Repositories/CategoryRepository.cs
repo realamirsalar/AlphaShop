@@ -39,6 +39,11 @@ namespace AlphaShop.Infrastructure.Contract.Repositories
             return _db.Categories.AsNoTracking().FirstOrDefault(x => x.Id == id);
         }
 
+        public List<Category> GetChildeCategories()
+        {
+            return _db.Categories.Where(c => c.ParentId != null).ToList();
+        }
+
         public List<Category> GetParsntCategories()
         {
             return _db.Categories.AsNoTracking().Where(c => c.ParentId == 0 || c.ParentId == null).ToList();

@@ -2,6 +2,7 @@
 using AlphaShop.Infrastructure.Contract;
 using AlphaShop.Infrastructure.Contract.Repositories;
 using AlphaShop.Infrastructure.Data;
+using AlphaShop.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,7 +22,10 @@ namespace AlphaShop.Infrastructure
             });
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddScoped<IFileService, FileService>();
             return services;
         }
     }

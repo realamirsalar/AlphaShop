@@ -10,6 +10,7 @@ namespace AlphaShop.Application.Common.Interfaces
         void CreateCateory(Category category);
         List<Category> GetAllCategories();
         List<Category> GetParsntCategories();
+        List<Category> GetChildeCategories();
         Category GetCategory(int id);
         void UpdateCategory(Category category);
         void DeleteCategory(Category category);

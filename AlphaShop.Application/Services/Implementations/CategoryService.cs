@@ -46,6 +46,11 @@ namespace AlphaShop.Application.Services.Implementations
             return _categoryRepository.GetCategory(id);
         }
 
+        public List<Category> GetChildeCategories()
+        {
+            return _categoryRepository.GetChildeCategories();
+        }
+
         public List<Category> GetParntCategories()
         {
             return _categoryRepository.GetParsntCategories();

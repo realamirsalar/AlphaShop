@@ -17,7 +17,6 @@ namespace AlphaShop.Domain.Entities
 
         [Display(Name = "عکس")]
         [Required(ErrorMessage = "مقداری برای {0} وارد کنید.")]
-        [MaxLength(40, ErrorMessage = "این بخش نمیتواند بیشتر از {1} باشد.")]
         public string ImageUrl { get; set; }
 
         [Display(Name = "توضیحات")]

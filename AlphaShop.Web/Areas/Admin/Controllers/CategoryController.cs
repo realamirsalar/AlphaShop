@@ -34,6 +34,7 @@ namespace AlphaShop.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(CategoryVM categoryVM)
         {
             if (ModelState.IsValid)
@@ -81,6 +82,7 @@ namespace AlphaShop.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Update(CategoryVM categoryVM)
         {
             if (ModelState.IsValid)
@@ -123,6 +125,7 @@ namespace AlphaShop.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Delete(CategoryVM categoryVM)
         {
             if (ModelState.IsValid)
