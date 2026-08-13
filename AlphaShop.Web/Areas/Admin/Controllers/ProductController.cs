@@ -2,6 +2,7 @@
 using AlphaShop.Application.Common.Utitlity;
 using AlphaShop.Application.Services.Interfaces;
 using AlphaShop.Domain.Entities;
+using AlphaShop.Web.ViewModels.Category;
 using AlphaShop.Web.ViewModels.Product;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -15,15 +16,17 @@ namespace AlphaShop.Web.Areas.Admin.Controllers
         private readonly ICategoryService _categoryService;
         private readonly IProductService _productService;
         private readonly IFileService _fileService;
+        private readonly IGalleryService _galleryService;
         private readonly IWebHostEnvironment _environment;
         private readonly IMapper _mapper;
-        public ProductController(ICategoryService categoryService, IProductService productService, IFileService fileService, IWebHostEnvironment environment, IMapper mapper)
+        public ProductController(ICategoryService categoryService, IProductService productService, IFileService fileService, IWebHostEnvironment environment, IMapper mapper, IGalleryService galleryService)
         {
             _categoryService = categoryService;
             _productService = productService;
             _fileService = fileService;
             _environment = environment;
             _mapper = mapper;
+            _galleryService = galleryService;
         }
 
         public IActionResult Index()
@@ -58,6 +61,16 @@ namespace AlphaShop.Web.Areas.Admin.Controllers
                     var streamFile = productVM.Image.OpenReadStream();
                     var imageUrl = _fileService.SaveFile(rootPath, SD.ProductLocation, fileName, streamFile);
 
+                    if(imageUrl == null)
+                    {
+                        ModelState.AddModelError("Image", "لطفا عکسی با فرمت درست وارد کنید.!");
+                        productVM.Categories = _categoryService.GetChildeCategories().Select(c => new SelectListItem()
+                        {
+                            Text = c.Name,
+                            Value = c.Id.ToString()
+                        });
+                        return View(productVM);
+                    }
                     var product = new Product
                     {
                         Name = productVM.Name,
@@ -74,7 +87,7 @@ namespace AlphaShop.Web.Areas.Admin.Controllers
                     _productService.CreateProduct(product);
 
                     TempData["success"] = "محصول با موفقیت افزوده شد!";
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(Gallery) , new { id = product.Id});
 
                 }
             }
@@ -87,6 +100,58 @@ namespace AlphaShop.Web.Areas.Admin.Controllers
             return View(productVM);
         }
         [HttpGet]
+        public IActionResult Gallery(int id)
+        {
+            var product = _productService.GetById(id);
+            product.Galleries = _galleryService.GetByProductId(id);
+            return View(product);
+        }
+        [HttpPost]
+        public IActionResult Gallery(int id,IFormFile FileUpload)
+        {
+            var product = _productService.GetById(id); 
+            if (FileUpload.Length == 0 || FileUpload == null)
+            {
+                ModelState.AddModelError("", "لطفا عکسی وارد کنید");
+                product.Galleries = _galleryService.GetByProductId(id);
+                return View(product);
+            }
+            var rootPath = _environment.WebRootPath;
+            var fileName = FileUpload.FileName;
+            var streamFile = FileUpload.OpenReadStream();
+            var imageUrl = _fileService.SaveFile(rootPath, SD.ProductLocation, fileName, streamFile);
+            if (imageUrl == null)
+            {
+                ModelState.AddModelError("FileUpload", "لطفا عکسی با فرمت درست وارد کنید.!");
+                return View(product);
+            }
+            var gallery = new Gallery()
+            {
+                ImageUrl = imageUrl,
+                ProductId = product.Id
+            };
+            _galleryService.Create(gallery);
+            TempData["success"] = "عکس با موفقیت افزوده شد!";
+            product.Galleries = _galleryService.GetByProductId(id);
+            return View(product);
+        }
+        
+        public IActionResult DeleteGallery(int id)
+        {
+            var gallery = _galleryService.Get(id);
+            if (gallery == null)
+            {
+                TempData["error"] = "عکس مورد نظر پیدا نشد!";
+                return RedirectToAction(nameof(Gallery), new { id = gallery.ProductId });
+            }
+            var rootPath = _environment.WebRootPath;
+            _galleryService.DeleteGallery(gallery.Id);
+            _fileService.DeleteFile(rootPath, gallery.ImageUrl.TrimStart('\\'));
+            TempData["success"] = "عکس با موفقیت حذف شد!";
+            return RedirectToAction(nameof(Gallery), new { id = gallery.ProductId });
+        }
+
+        [HttpGet]
         public IActionResult Update(int id)
         {
             var product = _productService.GetById(id);
@@ -98,10 +163,10 @@ namespace AlphaShop.Web.Areas.Admin.Controllers
             var productVM = _mapper.Map<ProductVM>(product);
 
             productVM.Categories = _categoryService.GetChildeCategories().Select(c => new SelectListItem()
-               {
-                   Text = c.Name,
-                   Value = c.Id.ToString()
-               });
+            {
+                Text = c.Name,
+                Value = c.Id.ToString()
+            });
 
             return View(productVM);
         }
@@ -112,24 +177,33 @@ namespace AlphaShop.Web.Areas.Admin.Controllers
             var product = _productService.GetById(productVM.Id);
             if (ModelState.IsValid)
             {
-                
+
                 if (productVM.Image != null)
                 {
                     var rootPath = _environment.WebRootPath;
                     var fileName = productVM.Image.FileName;
                     var streamFile = productVM.Image.OpenReadStream();
                     var imageUrl = _fileService.SaveFile(rootPath, SD.ProductLocation, fileName, streamFile);
-                    var oldUrl = product.ImageUrl.TrimStart('\\'); 
-                    
+                    var oldUrl = product.ImageUrl.TrimStart('\\');
+                    if (imageUrl == null)
+                    {
+                        ModelState.AddModelError("Image", "لطفا عکسی با فرمت درست وارد کنید.!");
+                        productVM.Categories = _categoryService.GetChildeCategories().Select(c => new SelectListItem()
+                        {
+                            Text = c.Name,
+                            Value = c.Id.ToString()
+                        });
+                        return View(productVM);
+                    }
                     _mapper.Map(productVM, product);
                     product.ImageUrl = imageUrl;
-                   
+
                     _productService.UpdateProduct(product);
 
                     _fileService.DeleteFile(rootPath, oldUrl);
 
                     TempData["success"] = "محصول با موفقیت ویرایش شد!";
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(Gallery), new { id = product.Id });
 
                 }
                 else
@@ -137,7 +211,7 @@ namespace AlphaShop.Web.Areas.Admin.Controllers
                     _mapper.Map(productVM, product);
                     _productService.UpdateProduct(product);
                     TempData["success"] = "محصول با موفقیت ویرایش شد!";
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(Gallery), new { id = product.Id });
                 }
             }
 
@@ -151,6 +225,39 @@ namespace AlphaShop.Web.Areas.Admin.Controllers
 
             return View(productVM);
         }
-        
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var product = _productService.GetById(id);
+            if (product == null)
+            {
+                TempData["error"] = "محصول مورد نظر پیدا نشد!";
+                return RedirectToAction(nameof(Index));
+            }
+            var productVM = _mapper.Map<ProductVM>(product);
+
+            return View(productVM);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(ProductVM productVM)
+        {
+            //    if (ModelState.IsValid)
+            //    {
+            var imageUrl = _productService.DeleteProduct(productVM.Id);
+            if (imageUrl!= null)
+            {
+                var rootPath = _environment.WebRootPath;
+                _fileService.DeleteFile(rootPath, imageUrl);
+                TempData["success"] = "محصول با موفقیت حذف شد!";
+            }
+            else
+            {
+                TempData["error"] = "محصول مورد نظر پیدا نشد!";
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

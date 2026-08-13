@@ -11,5 +11,6 @@ namespace AlphaShop.Application.Services.Interfaces
         Product GetById(int id);
         void CreateProduct(Product product);
         void UpdateProduct(Product product);
+        string DeleteProduct(int id);
     }
 }

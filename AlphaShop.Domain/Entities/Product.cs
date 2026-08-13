@@ -45,6 +45,7 @@ namespace AlphaShop.Domain.Entities
         public int CategoryId { get; set; }
 
         [ForeignKey("CategoryId")] public Category Category { get; set; }
+        public List<Gallery> Galleries { get; set; } = new();
     }
 
 }

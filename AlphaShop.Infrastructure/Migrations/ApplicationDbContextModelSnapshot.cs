@@ -48,6 +48,27 @@ namespace AlphaShop.Infrastructure.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("AlphaShop.Domain.Entities.Gallery", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Galleries");
+                });
+
             modelBuilder.Entity("AlphaShop.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -111,6 +132,17 @@ namespace AlphaShop.Infrastructure.Migrations
                     b.Navigation("ParentCategory");
                 });
 
+            modelBuilder.Entity("AlphaShop.Domain.Entities.Gallery", b =>
+                {
+                    b.HasOne("AlphaShop.Domain.Entities.Product", "Product")
+                        .WithMany("Galleries")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("AlphaShop.Domain.Entities.Product", b =>
                 {
                     b.HasOne("AlphaShop.Domain.Entities.Category", "Category")
@@ -125,6 +157,11 @@ namespace AlphaShop.Infrastructure.Migrations
             modelBuilder.Entity("AlphaShop.Domain.Entities.Category", b =>
                 {
                     b.Navigation("Categories");
+                });
+
+            modelBuilder.Entity("AlphaShop.Domain.Entities.Product", b =>
+                {
+                    b.Navigation("Galleries");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,75 @@
+﻿@model ProductVM
+
+<header class="page-header page-header-dark bg-gradient-primary-to-secondary mb-4">
+    <div class="container-xl px-4">
+        <div class="page-header-content pt-4">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto mt-4">
+                    <h1 class="page-header-title">
+                        <div class="page-header-icon"><i class="bx bx-file-blank"></i></div>
+                        حذف محصول @Model.Name
+                    </h1>
+                    <div class="page-header-subtitle">اینجا میتوانید یک محصول را حذف کنید.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container-xl px-4">
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="solid">
+                <div class="card mb-4">
+                    <div class="card-header">حذف محصول</div>
+                    <div class="card-body">
+                        <div class="sbp-preview">
+                            <div class="sbp-preview-content">
+                                <form method="post" enctype="multipart/form-data">
+                                    <input asp-for="Id" type="hidden" />
+                                    <div class="mb-3">
+                                        <label asp-for="Name"></label>
+                                        <input asp-for="Name" class="form-control form-control-solid" readonly placeholder="لطفا نام محصول را وارد کنید...">
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label asp-for="Description"></label>
+                                        <input asp-for="Description" class="form-control form-control-solid" readonly placeholder="توضیحات محصول محصول را وارد کنید ...">
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label asp-for="Tags"></label>
+                                        <input asp-for="Tags" class="form-control form-control-solid" readonly placeholder="تگ های محصول محصول را وارد کنید ...">
+                                        <span asp-validation-for="Tags" class="text-danger"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label asp-for="OldPrice"></label>
+                                        <input asp-for="OldPrice" class="form-control form-control-solid" readonly placeholder="قیمت قدیمی محصول را وارد کنید ...">
+                                        <span asp-validation-for="OldPrice" class="text-danger"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label asp-for="Price"></label>
+                                        <input asp-for="Price" class="form-control form-control-solid" readonly placeholder="قیمت جدید محصول را وارد کنید ...">
+                                        <span asp-validation-for="Price" class="text-danger"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label asp-for="Quntity"></label>
+                                        <input asp-for="Quntity" class="form-control form-control-solid" readonly placeholder="موجودی محصول را وارد کنید ...">
+                                        <span asp-validation-for="Quntity" class="text-danger"></span>
+                                    </div>
+                                   
+
+                                    <button class="btn btn-danger"><i class="bx bx-check-circle"></i>حذف</button>
+                                    <a asp-area="Admin" asp-controller="Product" asp-action="Index" class="btn btn-danger">بازگشت</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section AdminScripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -9,6 +9,10 @@ namespace AlphaShop.Infrastructure.Services
     {
         public string SaveFile(string rootPath,string locationName, string fileName, Stream file)
         {
+            if(Path.GetExtension(fileName) != ".jpg" && Path.GetExtension(fileName) != ".png" && Path.GetExtension(fileName) != ".wedp")
+            {
+                return null;
+            }
             var uploadFolder = Path.Combine(rootPath, @$"images\{locationName}");
             if (!Directory.Exists(uploadFolder))
             {

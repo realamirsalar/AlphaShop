@@ -1,0 +1,195 @@
+﻿@model Product
+<header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+    <div class="container-xl px-4">
+        <div class="page-header-content pt-4">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto mt-4">
+                    <h1 class="page-header-title">
+                        <div class="page-header-icon"><i class="bx bx-left-arrow-circle"></i></div>
+                        بخش افزودن عکس
+                    </h1>
+                    <div class="page-header-subtitle">در این بخش شما میتواند عکس به محصول @Model.Name اضافه کنید.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main page content-->
+<div class="container-xl px-4 mt-n10">
+    <div class="row">
+        <div class=" col-xl-6 mb-4">
+            <div class="card card-header-actions">
+                <div class="card-header p-3">
+                    افزودن عکس به محصول @Model.Name
+                </div>
+                <div class="card-body pt-0">
+                    <div class="tab-content" id="cardTabContent">
+                        <!-- Wizard tab pane item 1-->
+                        <div class="tab-pane fade show active" id="wizard1" role="tabpanel" aria-labelledby="wizard1-tab">
+                            <div class="row justify-content-center">
+                                <div class="col-xxl-12 my-3">
+
+                                    <div asp-validation-summary="All"></div>
+                                    <h3 class="text-primary">بارگذاری عکس</h3>
+                                    <form method="post" enctype="multipart/form-data">
+
+                                        <input name="id" value="@Model.Id" type="hidden" />
+                                        <div class="mb-3">
+                                            <label class="small mb-1">بار گذاری تصویر</label>
+                                            <input type="file" name="FileUpload" value="" class="form-control input-blog" />
+                                            <span class="text-danger"></span>
+                                        </div>
+
+                                        <hr class="my-4">
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <button class="btn btn-warning w-100" type="submit">ثبت اطلاعات</button>
+                                        </div>
+                                    </form>
+
+                                    @* @if (Model.Galleries.Count >= 2)
+
+                                    {
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <a href="@Url.Action("ProductProperty" , "Dashboard" , new { id = Model.Id})" class="btn btn-success w-100">رفتن به مرحله بعد</a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <a href="@Url.Action()" class="btn btn-success disabled w-100">حداقل دو عکس برای محصول وارد نمایید</a>
+                                        </div>
+                                    } *@
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <a asp-area="Admin" asp-controller="Product" asp-action="Index" class="btn btn-success w-100">اتمام مراحل</a>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <a asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-danger w-100">بازگشت</a>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Wizard tab pane item 2-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="card my-4">
+                <div class="card-header">
+                    <h4 class="text-primary float-start mt-2">گالری محصول @Model.Name</h4>
+                </div>
+                <div class="card-body">
+                    <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                        <div class="dataTable-container">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="col-1">شناسه</th>
+                                        <th class="col">عکس</th>
+                                        <th class="col">عملیات</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                     @if (Model.Galleries.Count() > 0)
+                                    {
+                                        @foreach (var item in Model.Galleries)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @item.Id
+                                                </td>
+                                                <td>
+                                                    <img src="@item.ImageUrl" alt="@Model.Name" width="150" />
+                                                    <td>
+                                                        <a asp-area="Admin" asp-controller="Product" asp-action="DeleteGallery" asp-route-id="@item.Id" class="btn btn-datatable btn-icon btn-transparent-dark me-2">
+                                                            <i class="bx bx-trash fs-3 text-pink"></i>
+                                                        </a>
+                                                    </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="3" class="text-center">
+                                                هیچ عکسی برای این محصول ثبت نشده است.
+                                            </td>
+                                        </tr>            
+                                    }
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 mb-4">
+                <div class="card card-header-actions">
+                    <div class="card-header">
+                        مشخصات محصول @Model.Name
+                    </div>
+
+                    <div class="card-body">
+                        <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+                            <div class="dataTable-container">
+
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td>
+                                            نام محصول
+                                        </td>
+                                        <td>
+                                            @Model.Name
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            قیمت
+                                        </td>
+                                        <td>
+                                            <del class="text-danger">
+                                                @Model.OldPrice
+                                            </del>
+                                            <b>@Model.Price</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            توضیحات
+                                        </td>
+                                        <td>
+                                            @Html.Raw(Model.Description)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            تگ ها
+                                        </td>
+                                        <td>
+                                            @Model.Tags
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <td>
+                                            دسته بندی
+                                        </td>
+                                        <td>
+                                            @Model.Category.Name
+                                        </td>
+                                    </tr>
+                                    
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer position-relative">
+                        <div class="d-flex align-items-center justify-content-between small text-body">
+                            <a class="stretched-link text-body" asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-id="@Model.Id">باز گشت به صفحه اطلاعات محصول</a>
+                            <i class="bx bx-chevrons-left"></i>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

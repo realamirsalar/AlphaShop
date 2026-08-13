@@ -31,13 +31,24 @@ namespace AlphaShop.Application.Services.Implementations
 
         public Product GetById(int id)
         {
-            return _productRepository.Get(c => c.Id == id);
+            return _productRepository.Get(c => c.Id == id,includeProperties: "Category");
         }
 
         public void UpdateProduct(Product product)
         {
             _productRepository.Update(product);
             _unitOfWork.Save();
+        }
+        public string DeleteProduct(int id)
+        {
+            var product = GetById(id);
+            if (product == null)
+            {
+                return null;
+            }
+            _productRepository.Remove(product);
+            _unitOfWork.Save();
+            return product.ImageUrl.TrimStart('\\'); 
         }
     }
 }

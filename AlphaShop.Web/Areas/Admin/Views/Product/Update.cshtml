@@ -33,7 +33,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label asp-for="Description"></label>
-                                        <input asp-for="Description" class="form-control form-control-solid" placeholder="توضیحات محصول محصول را وارد کنید ...">
+                                        <input asp-for="Description" id="product-description" class="form-control form-control-solid" placeholder="توضیحات محصول محصول را وارد کنید ...">
                                         <span asp-validation-for="Description" class="text-danger"></span>
                                     </div>
                                     <div class="mb-3">
@@ -87,6 +87,16 @@
     </div>
 </div>
 
+
 @section AdminScripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        tinymce.init({
+            selector: '#product-description',
+            license_key: 'gpl',
+            height: 400,
+            plugins: 'link lists image table code wordcount',
+            toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image table | code'
+        });
+    </script>
 }
