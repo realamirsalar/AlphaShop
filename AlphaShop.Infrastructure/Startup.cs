@@ -1,8 +1,10 @@
 ﻿using AlphaShop.Application.Common.Interfaces;
+using AlphaShop.Domain.Entities;
 using AlphaShop.Infrastructure.Contract;
 using AlphaShop.Infrastructure.Contract.Repositories;
 using AlphaShop.Infrastructure.Data;
 using AlphaShop.Infrastructure.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +27,11 @@ namespace AlphaShop.Infrastructure
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IGalleryRepository, GalleryRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAutService, AutService>();
+
+            services.AddIdentityCore<ApplicationUser>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddScoped<IFileService, FileService>();
             return services;

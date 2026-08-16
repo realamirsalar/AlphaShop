@@ -1,53 +1,1101 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html dir="rtl" lang="fa">
+ 
+<!-- Mirrored from www.iarsalan.ir/template/mocart/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Oct 2025 19:27:37 GMT -->
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - فروشگاه آلفا</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/AlphaShop.Web.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AlphaShop.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Admin Panel</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+  <!-- meta tags -->
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="" name="description"/>
+  <meta content="" name="keywords"/>
+  <!-- title -->
+  <title>
+   Mocart - قالب HTML5 فروشگاهی و چندمنظوره
+  </title>
+  <!-- favicon -->
+  <link href="~/assets/img/logo/favicon.png" rel="icon" type="image/x-icon"/>
+  <!-- css -->
+  <link href="~/assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="~/assets/css/all-fontawesome.min.css" rel="stylesheet"/>
+  <link href="~/assets/css/animate.min.css" rel="stylesheet"/>
+  <link href="~/assets/css/magnific-popup.min.css" rel="stylesheet"/>
+  <link href="~/assets/css/owl.carousel.min.css" rel="stylesheet"/>
+  <link href="~/assets/css/jquery-ui.min.css" rel="stylesheet"/>
+  <link href="~/assets/css/nice-select.min.css" rel="stylesheet"/>
+  <link href="~/assets/css/style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <!-- preloader -->
+  <div class="preloader">
+   <div class="loader-ripple">
+	<div>
+	</div>
+	<div>
+	</div>
+   </div>
+  </div>
+  <!-- preloader end -->
+  <!-- header area -->
+  <header class="header">
+   <!-- header top -->
+   <div class="header-top">
+	<div class="container">
+	 <div class="header-top-wrapper">
+	  <div class="row">
+	   <div class="col-12 col-md-6 col-lg-6 col-xl-5">
+		<div class="header-top-left">
+		 <ul class="header-top-list">
+		  <li>
+		   <a href="https://live.themewild.com/cdn-cgi/l/email-protection#c0a9aea6af80a5b8a1adb0aca5eea3afad">
+			<i class="far fa-envelopes">
+			</i>
+			<span class="__cf_email__" data-cfemail="5a33343c351a3f223b372a363f74393537">
+			 [ایمیل محافظت شده]
+			</span>
+		   </a>
+		  </li>
+		  <li>
+		   <a href="tel:03130010011">
+			<i class="far fa-headset">
+			</i>
+			03130010011		   
+		  </a>
+		  </li>
+		 </ul>
+		</div>
+	   </div>
+	   <div class="col-12 col-md-6 col-lg-6 col-xl-7">
+		<div class="header-top-right">
+		 <ul class="header-top-list">
+		  <li class="social">
+		   <div class="header-top-social">
+			<span>
+			 ما را دنبال کنید:
+			</span>
+			<a href="#">
+			 <i class="fab fa-facebook">
+			 </i>
+			</a>
+			<a href="#">
+			 <i class="fab fa-x-twitter">
+			 </i>
+			</a>
+			<a href="#">
+			 <i class="fab fa-instagram">
+			 </i>
+			</a>
+			<a href="#">
+			 <i class="fab fa-linkedin">
+			 </i>
+			</a>
+		   </div>
+		  </li>
+		 </ul>
+		</div>
+	   </div>
+	  </div>
+	 </div>
+	</div>
+   </div>
+   <!-- header top end -->
+   <!-- header middle -->
+   <div class="header-middle">
+	<div class="container">
+	 <div class="row align-items-center">
+	  <div class="col-5 col-lg-3 col-xl-3">
+	   <div class="header-middle-logo">
+		<a class="navbar-brand" href="index-2.html">
+		 <img alt="logo" src="~/assets/img/logo/logo.png"/>
+		</a>
+	   </div>
+	  </div>
+	  <div class="d-none d-lg-block col-lg-6 col-xl-5">
+	   <div class="header-middle-search">
+		<form action="#">
+		 <div class="search-content">
+		  <select class="select">
+		   <option value="">
+			همه دسته
+		   </option>
+		   <option value="1">
+			تخفیف های داغ امروز
+		   </option>
+		   <option value="2">
+			مد و لوازم جانبی
+		   </option>
+		   <option value="3">
+			الکترونیک
+		   </option>
+		   <option value="4">
+			خواربارفروشی و بازار
+		   </option>
+		   <option value="5">
+			موسیقی
+		   </option>
+		   <option value="6">
+			خانه و مبلمان
+		   </option>
+		   <option value="7">
+			اسباب بازی و بازی های ویدیویی
+		   </option>
+		   <option value="8">
+			هدایا
+		   </option>
+		   <option value="9">
+			نوزادان و مادران
+		   </option>
+		   <option value="10">
+			ورزش و فضای باز
+		   </option>
+		   <option value="11">
+			سلامت و زیبایی
+		   </option>
+		  </select>
+		  <input class="form-control" placeholder="اینجا جستجو کنید ..." type="text"/>
+		  <button class="search-btn" type="submit">
+		   <i class="far fa-search">
+		   </i>
+		  </button>
+		 </div>
+		</form>
+	   </div>
+	  </div>
+	  <div class="col-7 col-lg-3 col-xl-4">
+	   <div class="header-middle-right">
+		<ul class="header-middle-list">
+								<partial name="_AuthPartial" />
+		 <li class="dropdown-cart">
+		  <a class="shop-cart list-item" href="#">
+		   <div class="list-item-icon">
+			<i class="far fa-shopping-bag">
+			</i>
+			<span>
+			 5
+			</span>
+		   </div>
+		   <div class="list-item-info">
+			<h6>
+			 $350.00
+			</h6>
+			<h5>
+			 سبد خرید
+			</h5>
+		   </div>
+		  </a>
+		  <div class="dropdown-cart-menu">
+		   <div class="dropdown-cart-header">
+			<span>
+			 03 مورد
+			</span>
+			<a href="shop-cart.html">
+			 مشاهده سبد خرید
+			</a>
+		   </div>
+		   <ul class="dropdown-cart-list">
+			<li>
+			 <div class="dropdown-cart-item">
+			  <div class="cart-img">
+			   <a href="shop-single.html">
+				<img alt="#" src="~/assets/img/product/b6.png"/>
+			   </a>
+			  </div>
+			  <div class="cart-info">
+			   <h4>
+				<a href="shop-single.html">
+				 ایرپاد آبی اپل
+				</a>
+			   </h4>
+			   <p class="cart-qty">
+				1x -
+				<span class="cart-amount">
+				 $200.00
+				</span>
+			   </p>
+			  </div>
+			  <a class="cart-remove" href="#" title="Remove this item">
+			   <i class="far fa-times-circle">
+			   </i>
+			  </a>
+			 </div>
+			</li>
+			<li>
+			 <div class="dropdown-cart-item">
+			  <div class="cart-img">
+			   <a href="shop-single.html">
+				<img alt="#" src="~/assets/img/product/e1.png"/>
+			   </a>
+			  </div>
+			  <div class="cart-info">
+			   <h4>
+				<a href="shop-single.html">
+				 ایرپاد آبی اپل
+				</a>
+			   </h4>
+			   <p class="cart-qty">
+				1x -
+				<span class="cart-amount">
+				 $120.00
+				</span>
+			   </p>
+			  </div>
+			  <a class="cart-remove" href="#" title="Remove this item">
+			   <i class="far fa-times-circle">
+			   </i>
+			  </a>
+			 </div>
+			</li>
+			<li>
+			 <div class="dropdown-cart-item">
+			  <div class="cart-img">
+			   <a href="shop-single.html">
+				<img alt="#" src="~/assets/img/product/d11.png"/>
+			   </a>
+			  </div>
+			  <div class="cart-info">
+			   <h4>
+				<a href="shop-single.html">
+				 ایرپاد آبی اپل
+				</a>
+			   </h4>
+			   <p class="cart-qty">
+				1x -
+				<span class="cart-amount">
+				 $330.00
+				</span>
+			   </p>
+			  </div>
+			  <a class="cart-remove" href="#" title="Remove this item">
+			   <i class="far fa-times-circle">
+			   </i>
+			  </a>
+			 </div>
+			</li>
+		   </ul>
+		   <div class="dropdown-cart-bottom">
+			<div class="dropdown-cart-total">
+			 <span>
+			  مجموع
+			 </span>
+			 <span class="total-amount">
+			  $650.00
+			 </span>
+			</div>
+			<a class="theme-btn" href="shop-checkout.html">
+			 پرداخت
+			</a>
+		   </div>
+		  </div>
+		 </li>
+		</ul>
+	   </div>
+	  </div>
+	 </div>
+	</div>
+   </div>
+   <!-- header middle end -->
+   <!-- navbar -->
+   <div class="main-navigation">
+	<nav class="navbar light navbar-expand-lg">
+	 <div class="container position-relative">
+	  <a class="navbar-brand" href="index-2.html">
+	   <img alt="logo" class="logo-scrolled" src="~/assets/img/logo/logo.png"/>
+	  </a>
+	  <div class="category-all">
+	   <button class="category-btn" type="button">
+		<i class="fas fa-list-ul">
+		</i>
+		<span>
+		 همه دسته ها
+		</span>
+	   </button>
+	   <ul class="main-category">
+		<li>
+		 <a href="#">
+		  <img alt="" src="~/assets/img/icon/new.svg"/>
+		  <span>
+		   ورودی های جدید
+		  </span>
+		  <i class="far fa-angle-left">
+		  </i>
+		 </a>
+		 <div class="sub-category-mega">
+		  <div class="row">
+		   <div class="col-lg-3">
+			<div class="category-single">
+			 <h6 class="category-title-text">
+			  شیوه
+			 </h6>
+			 <div class="category-link">
+			  <a href="shop-grid.html">
+			   پیراهن زنانه
+			  </a>
+			  <a href="shop-grid.html">
+			   تیشرت مردانه
+			  </a>
+			  <a href="shop-grid.html">
+			   شیشه آفتابی زنانه
+			  </a>
+			  <a href="shop-grid.html">
+			   کیف های کراس بادی
+			  </a>
+			  <a href="shop-grid.html">
+			   ساعت مچی زنانه
+			  </a>
+			  <a href="shop-grid.html">
+			   پیراهن مردانه
+			  </a>
+			  <a href="shop-grid.html">
+			   شلوار رسمی
+			  </a>
+			 </div>
+			</div>
+		   </div>
+		   <div class="col-lg-3">
+			<div class="category-single">
+			 <h6 class="category-title-text">
+			  لوازم جانبی
+			 </h6>
+			 <div class="category-link">
+			  <a href="shop-grid.html">
+			   کیف مسافرتی
+			  </a>
+			  <a href="shop-grid.html">
+			   النگو و دستبند
+			  </a>
+			  <a href="shop-grid.html">
+			   لوازم جانبی مو
+			  </a>
+			  <a href="shop-grid.html">
+			   فروشنده
+			  </a>
+			  <a href="shop-grid.html">
+			   چمدان و کیف پول
+			  </a>
+			  <a href="shop-grid.html">
+			   ساعت و عینک آفتابی
+			  </a>
+			  <a href="shop-grid.html">
+			   کفش و ساعت
+			  </a>
+			 </div>
+			</div>
+		   </div>
+		   <div class="col-lg-3">
+			<div class="category-single">
+			 <h6 class="category-title-text">
+			  الکترونیک
+			 </h6>
+			 <div class="category-link">
+			  <a href="shop-grid.html">
+			   لپ تاپ و دسکتاپ
+			  </a>
+			  <a href="shop-grid.html">
+			   تلفن و تبلت
+			  </a>
+			  <a href="shop-grid.html">
+			   ویش لیست من
+			  </a>
+			  <a href="shop-grid.html">
+			   هاب و اسکله
+			  </a>
+			  <a href="shop-grid.html">
+			   هدفون بلوتوث
+			  </a>
+			  <a href="shop-grid.html">
+			   گوینده و تئاتر
+			  </a>
+			  <a href="shop-grid.html">
+			   گجت و مانیتور
+			  </a>
+			 </div>
+			</div>
+		   </div>
+		   <div class="col-lg-3">
+			<div class="category-img">
+			 <a href="#">
+			  <img alt="" src="~/assets/img/banner/category-banner.jpg"/>
+			 </a>
+			</div>
+		   </div>
+		  </div>
+		 </div>
+		</li>
+		<li>
+		 <a href="shop-grid.html">
+		  <img alt="" src="~/assets/img/icon/fashion.svg"/>
+		  <span>
+		   مد و
+										لوازم جانبی
+		  </span>
+		 </a>
+		</li>
+		<li>
+		 <a href="shop-grid.html">
+		  <img alt="" src="~/assets/img/icon/electronics.svg"/>
+		  <span>
+		   الکترونیک
+		  </span>
+		 </a>
+		</li>
+		<li>
+		 <a href="shop-grid.html">
+		  <img alt="" src="~/assets/img/icon/grocery.svg"/>
+		  <span>
+		   مواد غذایی و
+										بازار
+		  </span>
+		 </a>
+		</li>
+		<li>
+		 <a href="shop-grid.html">
+		  <img alt="" src="~/assets/img/icon/furniture.svg"/>
+		  <span>
+		   خانه و
+										مبلمان
+		  </span>
+		 </a>
+		</li>
+		<li>
+		 <a href="shop-grid.html">
+		  <img alt="" src="~/assets/img/icon/music.svg"/>
+		  <span>
+		   موسیقی و صدا
+		  </span>
+		 </a>
+		</li>
+		<li>
+		 <a href="shop-grid.html">
+		  <img alt="" src="~/assets/img/icon/toy.svg"/>
+		  <span>
+		   اسباب بازی و بازی های ویدیویی
+		  </span>
+		 </a>
+		</li>
+		<li>
+		 <a href="shop-grid.html">
+		  <img alt="" src="~/assets/img/icon/gift.svg"/>
+		  <span>
+		   هدایا
+		  </span>
+		 </a>
+		</li>
+		<li>
+		 <a href="shop-grid.html">
+		  <img alt="" src="~/assets/img/icon/baby-mom.svg"/>
+		  <span>
+		   نوزادان و
+										مامان ها
+		  </span>
+		 </a>
+		</li>
+		<li>
+		 <a href="shop-grid.html">
+		  <img alt="" src="~/assets/img/icon/beauty.svg"/>
+		  <span>
+		   سلامتی و
+										زیبایی
+		  </span>
+		 </a>
+		</li>
+		<li>
+		 <a href="shop-grid.html">
+		  <img alt="" src="~/assets/img/icon/sports.svg"/>
+		  <span>
+		   ورزش و
+										فضای باز
+		  </span>
+		 </a>
+		</li>
+		<li>
+		 <a href="shop-grid.html">
+		  <img alt="" src="~/assets/img/icon/garden.svg"/>
+		  <span>
+		   خانه و باغ
+		  </span>
+		 </a>
+		</li>
+		<li>
+		 <a href="shop-grid.html">
+		  <img alt="" src="~/assets/img/icon/automotive.svg"/>
+		  <span>
+		   خودرو
+		  </span>
+		 </a>
+		</li>
+	   </ul>
+	  </div>
+	  <div class="mobile-menu-right">
+	   <div class="mobile-menu-btn">
+		<a class="nav-right-link search-box-outer" href="#">
+		 <i class="far fa-search">
+		 </i>
+		</a>
+		<a class="nav-right-link" href="wishlist.html">
+		 <i class="far fa-heart">
+		 </i>
+		 <span>
+		  2
+		 </span>
+		</a>
+		<a class="nav-right-link" href="shop-cart.html">
+		 <i class="far fa-shopping-bag">
+		 </i>
+		 <span>
+		  5
+		 </span>
+		</a>
+	   </div>
+	   <button aria-controls="offcanvasNavbar" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#offcanvasNavbar" data-bs-toggle="offcanvas" type="button">
+		<span>
+		</span>
+		<span>
+		</span>
+		<span>
+		</span>
+	   </button>
+	  </div>
+	  <div aria-labelledby="offcanvasNavbarLabel" class="offcanvas offcanvas-start" id="offcanvasNavbar" tabindex="-1">
+	   <div class="offcanvas-header">
+		<a class="offcanvas-brand" href="index-2.html" id="offcanvasNavbarLabel">
+		 <img alt="" src="~/assets/img/logo/logo.png"/>
+		</a>
+		<button aria-label="Close" class="btn-close" data-bs-dismiss="offcanvas" type="button">
+		</button>
+	   </div>
+	   <div class="offcanvas-body">
+		<ul class="navbar-nav justify-content flex-grow-1 pe-4" >
+		 <li class="nav-item dropdown">
+		  <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#">
+		   خانه
+		  </a>
+		  <ul class="dropdown-menu fade-down">
+		   <li>
+			<a class="dropdown-item" href="index.html">
+			 صفحه خانه ۱
+			</a>
+		   </li>
+		   <li>
+			<a class="dropdown-item" href="index-3.html">
+			 صفحه خانه ۲
+			</a>
+		   </li>
+		   <li>
+			<a class="dropdown-item" href="index-4.html">
+			 صفحه خانه ۳
+			</a>
+		   </li>
+		   <li>
+			<a class="dropdown-item" href="index-5.html">
+			 صفحه خانه ۴
+			</a>
+		   </li>
+		   <li>
+			<a class="dropdown-item" href="index-6.html">
+			 صفحه خانه ۵
+			</a>
+		   </li>
+		   <li>
+			<a class="dropdown-item" href="index-7.html">
+			 صفحه خانه ۶
+			</a>
+		   </li>
+		   <li>
+			<a class="dropdown-item" href="index-8.html">
+			 صفحه خانه ۷
+			</a>
+		   </li>
+		   <li>
+			<a class="dropdown-item" href="index-9.html">
+			 صفحه خانه ۸
+			</a>
+		   </li>
+		   <li>
+			<a class="dropdown-item" href="index-10.html">
+			 صفحه خانه ۹
+			</a>
+		   </li>
+		   <li>
+			<a class="dropdown-item" href="index-11.html">
+			 صفحه خانه ۱۰
+			</a>
+		   </li>
+		  </ul>
+		 </li>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - AlphaShop.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+		 <li class="nav-item">
+		  <a class="nav-link" href="contact.html">
+		   تماس
+		  </a>
+		 </li>
+		 <li class="nav-item">
+		  <a class="nav-link" href="contact.html">
+		   تماس
+		  </a>
+		 </li>
+		 <li class="nav-item">
+		  <a class="nav-link" href="contact.html">
+		   تماس
+		  </a>
+		 </li>
+		 <li class="nav-item">
+		  <a class="nav-link" href="contact.html">
+		   تماس
+		  </a>
+		 </li>
+		 <li class="nav-item">
+		  <a class="nav-link" href="contact.html">
+		   تماس
+		  </a>
+		 </li>
+		</ul>
+		<!-- nav-right -->
+	   </div>
+	  </div>
+	 </div>
+	</nav>
+   </div>
+   <!-- navbar end -->
+  </header>
+  <!-- header area end -->
+  <!-- mobile popup search -->
+  <div class="search-popup">
+   <button class="close-search">
+	<span class="far fa-times">
+	</span>
+   </button>
+   <form action="#">
+	<div class="form-group">
+	 <input class="form-control" name="search-field" placeholder="اینجا جستجو کنید ..." required="" type="search"/>
+	 <button type="submit">
+	  <i class="far fa-search">
+	  </i>
+	 </button>
+	</div>
+   </form>
+  </div>
+  <!-- mobile popup search end -->
+  <main class="main">
+  @RenderBody()
+  </main>
+  <!-- footer area -->
+  <footer class="footer-area ft-bg">
+   <div class="footer-widget">
+	<div class="container">
+	 <div class="row footer-widget-wrapper pt-100 pb-40">
+	  <div class="col-md-6 col-lg-3">
+	   <div class="footer-widget-box about-us">
+		<a class="footer-logo" href="index-2.html">
+		 <img alt="" src="~/assets/img/logo/logo-light.png"/>
+		</a>
+		<p class="mb-3">
+		 ما انواع مختلفی از معابر در دسترس داریم، اما عمده آن دچار تغییر شده است
+								تزریق شده است.
+		</p>
+		<ul class="footer-contact">
+		 <li>
+		  <a href="tel:03130010011">
+		   <i class="far fa-phone">
+		   </i>
+		   03130010011
+		  </a>
+		 </li>
+		 <li>
+		  <i class="far fa-map-marker-alt">
+		  </i>
+		  اصفهان، چهارباغ بالا، متروپل
+		 </li>
+		 <li>
+		  <a href="https://live.themewild.com/cdn-cgi/l/email-protection#5b32353d341b3e233a362b373e75383436">
+		   <i class="far fa-envelope">
+		   </i>
+		   <span class="__cf_email__" data-cfemail="cca5a2aaa38ca9b4ada1bca0a9e2afa3a1">
+			[ایمیل محافظت شده]
+		   </span>
+		  </a>
+		 </li>
+		 <li>
+		  <i class="far fa-clock">
+		  </i>
+		  دوشنبه تا جمعه (9:00 صبح تا 20:00)
+		 </li>
+		</ul>
+	   </div>
+	  </div>
+	  <div class="col-md-6 col-lg-2">
+	   <div class="footer-widget-box list">
+		<h4 class="footer-widget-title">
+		 لینک های سریع
+		</h4>
+		<ul class="footer-list">
+		 <li>
+		  <a href="about.html">
+		   درباره ما
+		  </a>
+		 </li>
+		 <li>
+		  <a href="help.html">
+		   اطلاعات تحویل
+		  </a>
+		 </li>
+		 <li>
+		  <a href="contact.html">
+		   با ما تماس بگیرید
+		  </a>
+		 </li>
+		 <li>
+		  <a href="blog.html">
+		   به روز رسانی اخبار
+		  </a>
+		 </li>
+		 <li>
+		  <a href="testimonial.html">
+		   توصیفات ما
+		  </a>
+		 </li>
+		 <li>
+		  <a href="terms.html">
+		   شرایط خدمات
+		  </a>
+		 </li>
+		 <li>
+		  <a href="privacy.html">
+		   سیاست حفظ حریم
+		  </a>
+		 </li>
+		</ul>
+	   </div>
+	  </div>
+	  <div class="col-md-6 col-lg-2">
+	   <div class="footer-widget-box list">
+		<h4 class="footer-widget-title">
+		 دسته بندی را مرور کنید
+		</h4>
+		<ul class="footer-list">
+		 <li>
+		  <a href="shop-grid.html">
+		   لوازم جانبی
+		  </a>
+		 </li>
+		 <li>
+		  <a href="shop-grid.html">
+		   خانه و باغ
+		  </a>
+		 </li>
+		 <li>
+		  <a href="shop-grid.html">
+		   الکترونیک
+		  </a>
+		 </li>
+		 <li>
+		  <a href="shop-grid.html">
+		   سلامت و زیبایی
+		  </a>
+		 </li>
+		 <li>
+		  <a href="shop-grid.html">
+		   خواربارفروشی و بازار
+		  </a>
+		 </li>
+		 <li>
+		  <a href="shop-grid.html">
+		   اسباب بازی و بازی
+		  </a>
+		 </li>
+		 <li>
+		  <a href="shop-grid.html">
+		   نوزادان و مادران
+		  </a>
+		 </li>
+		</ul>
+	   </div>
+	  </div>
+	  <div class="col-md-6 col-lg-2">
+	   <div class="footer-widget-box list">
+		<h4 class="footer-widget-title">
+		 مرکز پشتیبانی
+		</h4>
+		<ul class="footer-list">
+		 <li>
+		  <a href="faq.html">
+		   سوالات متداول
+		  </a>
+		 </li>
+		 <li>
+		  <a href="help.html">
+		   نحوه خرید
+		  </a>
+		 </li>
+		 <li>
+		  <a href="help.html">
+		   مرکز پشتیبانی
+		  </a>
+		 </li>
+		 <li>
+		  <a href="order-track.html">
+		   سفارش خود را پیگیری کنید
+		  </a>
+		 </li>
+		 <li>
+		  <a href="return.html">
+		   سیاست بازگشت
+		  </a>
+		 </li>
+		 <li>
+		  <a href="affiliate.html">
+		   افیلیت های ما
+		  </a>
+		 </li>
+		 <li>
+		  <a href="contact.html">
+		   نقشه سایت
+		  </a>
+		 </li>
+		</ul>
+	   </div>
+	  </div>
+	  <div class="col-md-6 col-lg-3">
+	   <div class="footer-widget-box list">
+		<h4 class="footer-widget-title">
+		 دریافت اپلیکیشن موبایل
+		</h4>
+		<p>
+		 اپلیکیشن Mocart اکنون در اپ استور و گوگل پلی در دسترس است.
+		</p>
+		<div class="footer-download">
+		 <h5>
+		  برنامه موبایل ما را دانلود کنید
+		 </h5>
+		 <div class="footer-download-btn">
+		  <a href="#">
+		   <i class="fab fa-google-play">
+		   </i>
+		   <div class="download-btn-info">
+			<span>
+			 دانلود کنید از
+			</span>
+			<h6>
+			 گوگل پلی
+			</h6>
+		   </div>
+		  </a>
+		  <a href="#">
+		   <i class="fab fa-app-store">
+		   </i>
+		   <div class="download-btn-info">
+			<span>
+			 دانلود کنید از
+			</span>
+			<h6>
+			 اپ استور
+			</h6>
+		   </div>
+		  </a>
+		 </div>
+		</div>
+		<div class="footer-payment mt-20">
+		 <span>
+		  قبول می کنیم:
+		 </span>
+		 <img alt="" src="~/assets/img/payment/visa.svg"/>
+		 <img alt="" src="~/assets/img/payment/mastercard.svg"/>
+		 <img alt="" src="~/assets/img/payment/amex.svg"/>
+		 <img alt="" src="~/assets/img/payment/discover.svg"/>
+		 <img alt="" src="~/assets/img/payment/paypal.svg"/>
+		</div>
+	   </div>
+	  </div>
+	 </div>
+	</div>
+   </div>
+   <div class="copyright">
+	<div class="container">
+	 <div class="copyright-wrap">
+	  <div class="row">
+	   <div class="col-12 col-lg-6 align-self-center">
+		<p class="copyright-text">
+		 تمامی حقوق محفوظ است. طراحی شده توسط iarsalan
+		</p>
+	   </div>
+	   <div class="col-12 col-lg-6 align-self-center">
+		<div class="footer-social">
+		 <span>
+		  ما را دنبال کنید:
+		 </span>
+		 <a href="#">
+		  <i class="fab fa-facebook-f">
+		  </i>
+		 </a>
+		 <a href="#">
+		  <i class="fab fa-x-twitter">
+		  </i>
+		 </a>
+		 <a href="#">
+		  <i class="fab fa-linkedin-in">
+		  </i>
+		 </a>
+		 <a href="#">
+		  <i class="fab fa-youtube">
+		  </i>
+		 </a>
+		</div>
+	   </div>
+	  </div>
+	 </div>
+	</div>
+   </div>
+  </footer>
+  <!-- footer area end -->
+  <!-- scroll-top -->
+  <a href="#" id="scroll-top">
+   <i class="far fa-arrow-up-from-arc">
+   </i>
+  </a>
+  <!-- scroll-top end -->
+  <!-- modal quick shop-->
+  <div aria-hidden="true" aria-labelledby="quickview" class="modal quickview fade" data-bs-backdrop="static" data-bs-keyboard="false" id="quickview" tabindex="-1">
+   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+	<div class="modal-content">
+	 <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+	  <i class="far fa-xmark">
+	  </i>
+	 </button>
+	 <div class="modal-body">
+	  <div class="row">
+	   <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+		<div class="quickview-img">
+		 <img alt="#" src="~/assets/img/product/e1.png"/>
+		</div>
+	   </div>
+	   <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+		<div class="quickview-content">
+		 <h4 class="quickview-title">
+		  ایرپاد آبی اپل
+		 </h4>
+		 <div class="quickview-rating">
+		  <i class="fas fa-star">
+		  </i>
+		  <i class="fas fa-star">
+		  </i>
+		  <i class="fas fa-star">
+		  </i>
+		  <i class="fas fa-star-half-alt">
+		  </i>
+		  <i class="far fa-star">
+		  </i>
+		  <span class="rating-count">
+		   (4 نظر مشتری)
+		  </span>
+		 </div>
+		 <div class="quickview-price">
+		  <h5>
+		   <del>
+			$860
+		   </del>
+		   <span>
+			$740
+		   </span>
+		  </h5>
+		 </div>
+		 <ul class="quickview-list">
+		  <li>
+		   برند:
+		   <span>
+			اپل
+		   </span>
+		  </li>
+		  <li>
+		   دسته:
+		   <span>
+			مراقبت های بهداشتی
+		   </span>
+		  </li>
+		  <li>
+		   موجود است
+		   <span class="stock">
+			موجود است
+		   </span>
+		  </li>
+		  <li>
+		   کد:
+		   <span>
+			789FGDF
+		   </span>
+		  </li>
+		 </ul>
+		 <div class="quickview-cart">
+		  <a class="theme-btn" href="#">
+		   به سبد خرید اضافه کنید
+		  </a>
+		 </div>
+		 <div class="quickview-social">
+		  <span>
+		   به اشتراک بگذارید:
+		  </span>
+		  <a href="#">
+		   <i class="fab fa-facebook-f">
+		   </i>
+		  </a>
+		  <a href="#">
+		   <i class="fab fa-x-twitter">
+		   </i>
+		  </a>
+		  <a href="#">
+		   <i class="fab fa-pinterest-p">
+		   </i>
+		  </a>
+		  <a href="#">
+		   <i class="fab fa-instagram">
+		   </i>
+		  </a>
+		  <a href="#">
+		   <i class="fab fa-linkedin-in">
+		   </i>
+		  </a>
+		 </div>
+		</div>
+	   </div>
+	  </div>
+	 </div>
+	</div>
+   </div>
+  </div>
+  <!-- modal quick shop end -->
+  <!-- js -->
+  <script data-cfasync="false" src="../../../live.themewild.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+  </script>
+  <script src="~/assets/js/jquery-3.7.1.min.js">
+  </script>
+  <script src="~/assets/js/modernizr.min.js">
+  </script>
+  <script src="~/assets/js/bootstrap.bundle.min.js">
+  </script>
+  <script src="~/assets/js/imagesloaded.pkgd.min.js">
+  </script>
+  <script src="~/assets/js/jquery.magnific-popup.min.js">
+  </script>
+  <script src="~/assets/js/isotope.pkgd.min.js">
+  </script>
+  <script src="~/assets/js/jquery.appear.min.js">
+  </script>
+  <script src="~/assets/js/jquery.easing.min.js">
+  </script>
+  <script src="~/assets/js/owl.carousel.min.js">
+  </script>
+  <script src="~/assets/js/counter-up.js">
+  </script>
+  <script src="~/assets/js/jquery-ui.min.js">
+  </script>
+  <script src="~/assets/js/jquery.nice-select.min.js">
+  </script>
+  <script src="~/assets/js/countdown.min.js">
+  </script>
+  <script src="~/assets/js/wow.min.js">
+  </script>
+  <script src="~/assets/js/main.js">
+  </script>
+  
 </body>
+
+<!-- Mirrored from www.iarsalan.ir/template/mocart/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Oct 2025 19:27:49 GMT -->
 </html>
