@@ -1,13 +1,16 @@
 ﻿using AlphaShop.Application.Common.Interfaces;
+using AlphaShop.Application.Common.Utitlity;
 using AlphaShop.Application.Services.Interfaces;
 using AlphaShop.Domain.Entities;
 using AlphaShop.Web.ViewModels.Category;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AlphaShop.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.AdminRole)]
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;

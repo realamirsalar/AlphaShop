@@ -1,4 +1,6 @@
 ﻿
+@model RegisterVM
+
 <div class="site-breadcrumb">
 	<div class="site-breadcrumb-bg" style="background: url(/assets/img/breadcrumb/01.jpg)">
 	</div>
@@ -34,35 +36,37 @@
 						حساب mocart رایگان خود را ایجاد کنید
 					</p>
 				</div>
-				<form action="#">
+				<div asp-validation-summary="All" class="text-danger"></div>
+				<form method="post">
 					<div class="form-group">
-						<label>
+						<label asp-for="Name">
 							نام کامل
 						</label>
-						<input class="form-control" placeholder="نام شما" type="text" />
+						<input asp-for="Name" class="form-control" placeholder="نام شما" type="text" />
+						<span class="text-danger" asp-validation-for="Name"></span>
 					</div>
 					<div class="form-group">
-						<label>
-							آدرس ایمیل
+						<label asp-for="PhoneNumber">
 						</label>
-						<input class="form-control" placeholder="ایمیل شما" type="email" />
+						<input asp-for="PhoneNumber" class="form-control" placeholder="شماره موبایل شما" />
+						<span class="text-danger" asp-validation-for="PhoneNumber"></span>
 					</div>
 					<div class="form-group">
-						<label>
+						<label asp-for="Password">
 							رمز
 						</label>
-						<input class="form-control" placeholder="رمز عبور شما" type="password" />
+						<input asp-for="Password" class=" form-control" placeholder="رمز عبور شما" type="password" />
+						<span class="text-danger" asp-validation-for="Password"></span>
 					</div>
-					<div class="form-check form-group">
-						<input class="form-check-input" id="agree" type="checkbox" value="" />
-						<label class="form-check-label" for="agree">
-							من با
-							<a href="#">
-								قوانین سایت
-							</a>
-							موافقم.
+					
+					<div class="form-group">
+						<label asp-for="ConfirmPassword">
+							تایید رمز عبور
 						</label>
+						<input asp-for="ConfirmPassword" class=" form-control" placeholder="تایید رمز عبور شما" type="password" />
+						<span class="text-danger" asp-validation-for="ConfirmPassword"></span>
 					</div>
+					
 					<div class="d-flex align-items-center">
 						<button class="theme-btn" type="submit">
 							<i class="far fa-paper-plane">
@@ -75,3 +79,7 @@
 		</div>
 	</div>
 </div>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

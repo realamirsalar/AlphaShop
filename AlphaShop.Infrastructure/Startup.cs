@@ -28,10 +28,7 @@ namespace AlphaShop.Infrastructure
             services.AddScoped<IGalleryRepository, GalleryRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAutService, AutService>();
-
-            services.AddIdentityCore<ApplicationUser>()
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddScoped<IDbInitializer , DbInitializer>();
 
             services.AddScoped<IFileService, FileService>();
             return services;

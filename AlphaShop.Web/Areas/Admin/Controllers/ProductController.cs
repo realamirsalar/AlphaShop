@@ -5,12 +5,14 @@ using AlphaShop.Domain.Entities;
 using AlphaShop.Web.ViewModels.Category;
 using AlphaShop.Web.ViewModels.Product;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AlphaShop.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.AdminRole)]
     public class ProductController : Controller
     {
         private readonly ICategoryService _categoryService;

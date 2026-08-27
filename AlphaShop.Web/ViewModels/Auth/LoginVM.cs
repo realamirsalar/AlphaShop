@@ -12,5 +12,8 @@ namespace AlphaShop.Web.ViewModels.Auth
         [Display(Name = "رمز عبور")]
         [Required(ErrorMessage = "لطفا رمز عبور خود را وارد کنید.")]
         public string Password { get; set; }
+        [Display(Name = "مرا به خاطر بسپار")]
+        public bool RemeberMe { get; set; }
+
     }
 }

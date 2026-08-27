@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AlphaShop.Application.Common.DTOs;
+using Microsoft.AspNetCore.Identity;
 
 namespace AlphaShop.Application.Common.Interfaces
 {
     public interface IAutService
     {
-        Task<bool> RegisterAsync();
+        Task<IdentityResult> RegisterAsync(RegisterDTO user);
+        Task<bool> LoginAsync(LoginDTO loginDTO);
     }
 }

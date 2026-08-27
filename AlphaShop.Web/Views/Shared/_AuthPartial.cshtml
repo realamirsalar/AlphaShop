@@ -1,17 +1,47 @@
-﻿<li>
-	@* <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="list-item"> *@
-	<a asp-controller="Auth" asp-action="Register" class="list-item">
-		<div class="list-item-icon">
-			<i class="far fa-user-circle">
-			</i>
-		</div>
-		<div class="list-item-info">
-			<h6>
-				وارد شوید
-			</h6>
-			<h5>
-				حساب کاربری
-			</h5>
-		</div>
-	</a>
-</li>
+﻿@using AlphaShop.Domain.Entities
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<ApplicationUser> _userManager;
+@inject SignInManager<ApplicationUser> _signInManager;
+
+
+    @if (_signInManager.IsSignedIn(User))
+    {
+		<li>
+
+		<a asp-controller="Auth" asp-action="Login" class="list-item">
+			<div class="list-item-icon">
+				<i class="far fa-user-circle">
+				</i>
+			</div>
+			<div class="list-item-info">
+				<h6>
+					خوش امدید
+				</h6>
+				<h5>
+					@_userManager.GetUserName(User)
+				</h5>
+			</div>
+		</a>
+		</li>
+    }
+    else
+	{
+		<li>
+		<a asp-controller="Auth" asp-action="Login" class="list-item">
+			<div class="list-item-icon">
+				<i class="far fa-user-circle">
+				</i>
+			</div>
+			<div class="list-item-info">
+				<h6>
+					وارد شوید
+				</h6>
+				<h5>
+					حساب کاربری
+				</h5>
+			</div>
+		</a>
+		</li>
+
+    }
