@@ -20,19 +20,25 @@ namespace AlphaShop.Infrastructure.Services
             _signInManager = signInManager;
         }
 
-        public async Task<bool> LoginAsync(LoginDTO loginDTO)
+        public async Task<string> LoginAsync(LoginDTO loginDTO)
         {
             var user = await _userManager.FindByNameAsync(loginDTO.PhoneNumber);
             if (user == null)
             {
-                return false;
+                return null;
             }
             var result = await _signInManager.PasswordSignInAsync(user , loginDTO.Password , loginDTO.RememberMe , false);
             if (result.Succeeded)
             {
-                return true;
+                var role = await _userManager.GetRolesAsync(user);
+                return role[0];
             }
-            return false;
+            return null;
+        }
+
+        public async Task LogoutAsync()
+        {
+            await _signInManager.SignOutAsync();
         }
 
         public async Task<IdentityResult> RegisterAsync(RegisterDTO appUser)

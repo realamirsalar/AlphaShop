@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="site-breadcrumb-wrap">
 			<h4 class="breadcrumb-title">
-				خطای 404
+				عدم دسترسی
 			</h4>
 			<ul class="breadcrumb-menu">
 				<li>
@@ -15,7 +15,7 @@
 					</a>
 				</li>
 				<li class="active">
-					خطای 404
+					عدم دسترسی 
 				</li>
 			</ul>
 		</div>
@@ -27,16 +27,13 @@
 	<div class="container">
 		<div class="col-md-6 mx-auto">
 			<div class="error-wrapper">
-				<div class="error-img">
-					<img alt="" src="assets/img/error/01.png" />
-				</div>
-				<h2>
-					اوه... صفحه یافت نشد!
+				<h2 class="text-danger">
+					شما نمیتوانید به این بخش وارد شوید
 				</h2>
-				<p>
-					ممکن است صفحه ای که به دنبال یافت نشد وجود نداشته باشد یا حذف شده باشد.
+				<p class="">
+					شما به این بخش دسترسی ندارید برای اطلاعات بیشتر میتوانید با مدیر سیستم تماس بگیرید!
 				</p>
-				<a class="theme-btn" href="index-2.html">
+				<a class="btn btn-lg btn-danger mt-4" asp-controller="Home" asp-action="Index">
 					به خانه برگرد
 					<i class="far fa-home">
 					</i>

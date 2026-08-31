@@ -6,6 +6,7 @@ namespace AlphaShop.Application.Common.Interfaces
     public interface IAutService
     {
         Task<IdentityResult> RegisterAsync(RegisterDTO user);
-        Task<bool> LoginAsync(LoginDTO loginDTO);
+        Task<string> LoginAsync(LoginDTO loginDTO);
+        Task LogoutAsync();
     }
 }

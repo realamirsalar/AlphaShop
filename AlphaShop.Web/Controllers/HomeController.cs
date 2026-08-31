@@ -1,3 +1,4 @@
+using AlphaShop.Application.Services.Interfaces;
 using AlphaShop.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -6,6 +7,13 @@ namespace AlphaShop.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IProductService _productService;
+
+        public HomeController(IProductService productService)
+        {
+            _productService = productService;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -16,10 +24,13 @@ namespace AlphaShop.Web.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Products(int page =1)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var allProducts = _productService.GetAllProducts();
+            var productDto = _productService.PageNation(page , 4);
+            ViewBag.PageCount = productDto.PageCount;
+            ViewBag.Page = page;
+            return View(productDto.Products);
         }
     }
 }

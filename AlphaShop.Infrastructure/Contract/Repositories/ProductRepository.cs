@@ -16,6 +16,15 @@ namespace AlphaShop.Infrastructure.Contract.Repositories
             _db = db;
         }
 
+        public List<Product> GetProductForPageNation(int page, int pageSize)
+        {
+            if (page <= 0)
+            {
+                return _db.Products.Where(p => p.NotShow == false).Take(pageSize).ToList();
+            }
+            return _db.Products.Where(p => p.NotShow == false).Skip(((int)page - 1) * pageSize).Take(pageSize).ToList();
+        }
+
         public void Update(Product product)
         {
             _db.Update(product);

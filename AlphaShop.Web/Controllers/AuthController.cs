@@ -1,6 +1,7 @@
 ﻿
 using AlphaShop.Application.Common.DTOs;
 using AlphaShop.Application.Common.Interfaces;
+using AlphaShop.Application.Common.Utitlity;
 using AlphaShop.Web.ViewModels.Auth;
 using Microsoft.AspNetCore.Mvc;
 
@@ -65,8 +66,12 @@ namespace AlphaShop.Web.Controllers
             {
                 var loginDTO = new LoginDTO(loginVM.PhoneNumber, loginVM.Password, loginVM.RemeberMe);
                 var result = await _autService.LoginAsync(loginDTO);
-                if (result)
+                if (result !=null)
                 {
+                    if (result == SD.AdminRole)
+                    {
+                        return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -80,9 +85,10 @@ namespace AlphaShop.Web.Controllers
         {
             return View();
         }
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-            return View();
+            await _autService.LogoutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

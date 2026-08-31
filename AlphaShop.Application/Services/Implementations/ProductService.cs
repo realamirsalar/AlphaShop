@@ -1,4 +1,5 @@
-﻿using AlphaShop.Application.Common.Interfaces;
+﻿using AlphaShop.Application.Common.DTOs;
+using AlphaShop.Application.Common.Interfaces;
 using AlphaShop.Application.Services.Interfaces;
 using AlphaShop.Domain.Entities;
 using System;
@@ -49,6 +50,25 @@ namespace AlphaShop.Application.Services.Implementations
             _productRepository.Remove(product);
             _unitOfWork.Save();
             return product.ImageUrl.TrimStart('\\'); 
+        }
+
+        public List<Product> GetAllIsShowProducts()
+        {
+            return _productRepository.GetAll(p => p.NotShow == false).ToList();
+        }
+
+        public PageNationDto PageNation(int page, int pageSize)
+        {
+            var product = GetAllIsShowProducts();
+            double pageCount = Math.Ceiling(product.Count() / (double) pageSize);
+            int skipCount = (page - 1) * pageSize;
+            product = _productRepository.GetProductForPageNation(page , pageSize);
+            
+            return new PageNationDto
+            {
+                Products = product,
+                PageCount = (int)pageCount
+            };
         }
     }
 }

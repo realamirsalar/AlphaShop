@@ -8,5 +8,6 @@ namespace AlphaShop.Application.Common.Interfaces
     public interface IProductRepository : IRepository<Product>
     {
         void Update(Product product);
+        List<Product> GetProductForPageNation(int page, int pageSize);
     }
 }
