@@ -1,0 +1,43 @@
+﻿@model List<Product>
+
+    
+<div class="product-area related-item pt-20">
+	<div class="container px-0">
+		<div class="row">
+			<div class="col-12">
+				<div class="site-heading-inline">
+					<h2 class="site-title">
+						موارد مرتبط
+					</h2>
+					<a href="#">
+						مشاهده بیشتر
+						<i class="fas fa-arrow-left">
+						</i>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="row g-4 item-2">
+            @foreach (var product in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product-card">
+                        <div class="product-thumb">
+                            <a href="@Url.Action("Detail", "Product", new { id = product.Id })">
+                                <img src="@product.ImageUrl" alt="@product.Name" />
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">
+                                <a href="@Url.Action("Detail", "Product", new { id = product.Id })">@product.Name</a>
+                            </h3>
+                            <div class="product-price">
+                                <span>@product.Price.ToString("C")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+		</div>
+	</div>
+</div>

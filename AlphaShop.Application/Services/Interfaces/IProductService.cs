@@ -12,6 +12,8 @@ namespace AlphaShop.Application.Services.Interfaces
         List<Product> GetAllIsShowProducts();
         PageNationDto PageNation(int page, int pageSize);
         Product GetById(int id);
+        Product GetByIdForDetails(int id);
+        List<Product> GetProductsByCategoryIdForDetail(int categoryId);
         void CreateProduct(Product product);
         void UpdateProduct(Product product);
         string DeleteProduct(int id);

@@ -131,9 +131,15 @@
 
 
                         <div class="snav-menu-heading d-sm-none">حساب کاربری</div>
-
+                        <div class="snav-menu-heading">مدیریت کاربران</div>
+                        <a class="nav-link pt-0" asp-area="Admin" asp-controller="AdminUser" asp-action="Index">
+                            <div class="nav-link-icon"><i class="bx bx-user-circle"></i></div>
+                            مدیریت ادمین ها
+                        </a>
                         <div class="snav-menu-heading">محتوا</div>
                         <!-- نمودارها -->
+                        @* @if(User.IsInRole()) *@
+                       
                         <a class="nav-link pt-0" asp-area="Admin" asp-controller="Category" asp-action="Index">
                             <div class="nav-link-icon"><i class="bx bx-category"></i></div>
                             دسته بندی

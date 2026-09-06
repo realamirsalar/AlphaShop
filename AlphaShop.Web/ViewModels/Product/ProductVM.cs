@@ -14,7 +14,6 @@ namespace AlphaShop.Web.ViewModels.Product
         public string Name { get; set; }
 
         [Display(Name = "عکس")]
-        
         public IFormFile Image { get; set; }
 
         [Display(Name = "توضیحات")]

@@ -8,7 +8,7 @@ namespace AlphaShop.Domain.Entities
     public class ApplicationUser : IdentityUser
     {
         public string Name { get; set; }
-        public DateTime CreateAt { get; set; }
+        public DateTime CreateAt { get; set; } = DateTime.UtcNow;
 
         public string State { get; set; }
         public string City { get; set; }

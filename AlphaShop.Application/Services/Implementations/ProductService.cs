@@ -70,5 +70,22 @@ namespace AlphaShop.Application.Services.Implementations
                 PageCount = (int)pageCount
             };
         }
+
+        public Product GetByIdForDetails(int id)
+        {
+            var product = _productRepository.GetForProductDetail(id);
+            if (product == null || product.NotShow == true)
+            {
+                return null;
+            }
+            product.Seen++;
+            _unitOfWork.Save();
+            return product;
+        }
+
+        public List<Product> GetProductsByCategoryIdForDetail(int categoryId)
+        {
+            return _productRepository.GetByCategoryId(categoryId).Take(4).ToList();
+        }
     }
 }

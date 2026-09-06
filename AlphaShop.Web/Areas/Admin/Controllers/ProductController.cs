@@ -56,7 +56,7 @@ namespace AlphaShop.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (productVM.Image.Length != 0 || productVM.Image != null)
+                if (productVM.Image != null || productVM.Image.Length != 0)
                 {
                     var rootPath = _environment.WebRootPath;
                     var fileName = productVM.Image.FileName;
@@ -98,7 +98,6 @@ namespace AlphaShop.Web.Areas.Admin.Controllers
                 Text = c.Name,
                 Value = c.Id.ToString()
             });
-
             return View(productVM);
         }
         [HttpGet]

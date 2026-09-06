@@ -52,13 +52,13 @@
 										}
 										
 										
-										<a href="shop-single.html">
+										<a asp-controller="Home" asp-action="ProductDetails" asp-route-id="@item.Id">
 											<img alt="@item.Name" src="@item.ImageUrl" />
 										</a>
 									</div>
 									<div class="product-content">
 										<h3 class="product-title">
-											<a href="shop-single.html">
+											<a asp-controller="Home" asp-action="ProductDetails" asp-route-id="@item.Id">
 												@item.Name
 											</a>
 										</h3>
@@ -74,7 +74,7 @@
 													}
 												</span>
 											</div>
-											<a aria-label="اضافه به سبد خرید" asp-route-id="@item.Id" class="product-cart-btn" data-bs-original-title="اضافه به سبد خرید" data-bs-placement="left" data-tooltip="tooltip" >
+											<a aria-label="اضافه به سبد خرید" asp-controller="Home" asp-action="ProductDetails" asp-route-id="@item.Id" class="product-cart-btn" data-bs-original-title="اضافه به سبد خرید" data-bs-placement="left" data-tooltip="tooltip">
 												<i class="far fa-shopping-bag">
 												</i>
 											</a>

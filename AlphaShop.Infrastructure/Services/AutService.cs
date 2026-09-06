@@ -27,12 +27,19 @@ namespace AlphaShop.Infrastructure.Services
             {
                 return null;
             }
+            //var lockDate = await _userManager.GetLockoutEndDateAsync(user);
+            if (user.LockoutEnd != null && user.LockoutEnd > DateTime.UtcNow)
+            {
+                return SD.LockedOut;
+            }
             var result = await _signInManager.PasswordSignInAsync(user , loginDTO.Password , loginDTO.RememberMe , false);
+            
             if (result.Succeeded)
             {
                 var role = await _userManager.GetRolesAsync(user);
                 return role[0];
             }
+            
             return null;
         }
 

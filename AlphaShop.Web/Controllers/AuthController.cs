@@ -55,6 +55,11 @@ namespace AlphaShop.Web.Controllers
         {
             if (HttpContext.User.Identity.IsAuthenticated)
             {
+                if(HttpContext.User.IsInRole(SD.AdminRole))
+                {
+                    return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+                }
+
                 return RedirectToAction("Index", "Home");
             }
             return View();
@@ -68,6 +73,11 @@ namespace AlphaShop.Web.Controllers
                 var result = await _autService.LoginAsync(loginDTO);
                 if (result !=null)
                 {
+                    if(result == SD.LockedOut)
+                    {
+                        ModelState.AddModelError(string.Empty, "حساب کاربری شما قفل شده است. لطفاً بعداً دوباره تلاش کنید یا با پشتیبانی تماس بگیرید.");
+                        return View(loginVM);
+                    }
                     if (result == SD.AdminRole)
                     {
                         return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
