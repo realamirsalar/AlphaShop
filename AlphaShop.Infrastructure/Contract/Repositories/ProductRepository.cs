@@ -20,7 +20,7 @@ namespace AlphaShop.Infrastructure.Contract.Repositories
         public List<Product> GetByCategoryId(int categoryId)
         {
             var products = _db.Products
-                .Where(p => p.CategoryId == categoryId && p.NotShow == false)
+                .Where(p => p.CategoryId == categoryId && p.NotShow == false)/*.Include(p => p.Category).ThenInclude(c => c.ParentCategory)*/
                 .ToList();
             return products;
         }

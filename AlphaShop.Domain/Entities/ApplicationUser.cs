@@ -10,9 +10,5 @@ namespace AlphaShop.Domain.Entities
         public string Name { get; set; }
         public DateTime CreateAt { get; set; } = DateTime.UtcNow;
 
-        public string State { get; set; }
-        public string City { get; set; }
-        public string Street { get; set; }
-        public string PostalCode { get; set; }
     }
 }

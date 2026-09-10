@@ -15,6 +15,7 @@ namespace AlphaShop.Application
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IGalleryService, GalleryService>();
+            services.AddScoped<IShoppingCartService, ShoppingCartService>();
             return services;
         }
     }

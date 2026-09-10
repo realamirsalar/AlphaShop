@@ -96,20 +96,18 @@
 						<div class="shop-single-action">
 							<div class="row align-items-center">
 								<div class="col-md-6 col-lg-12 col-xl-6">
-									<div class="shop-single-btn">
-										<a class="theme-btn" href="#">
+								<div class="shop-single-btn">
+									<div asp-validation-summary="All" class="text-danger"></div>
+									<form asp-controller="Shopping" asp-action="Add" method="post">
+										<input class="quantity mb-3" hidden type="number" name="productId" value="@Model.Id">
+										<input class="quantity mb-3" type="number" name="quntity" value="1" min="1" max="@Model.Quntity">
+										
+										<button class="theme-btn">
 											<span class="far fa-shopping-bag" style="transform: rotate(0);">
 											</span>
 											اضافه به سبد
-										</a>
-										<a class="theme-btn theme-btn2" data-tooltip="tooltip" href="#" title="اضافه به ویش لیست">
-											<span class="far fa-heart" style="transform: rotate(0);">
-											</span>
-										</a>
-										<a class="theme-btn theme-btn2" data-tooltip="tooltip" href="#" title="اضافه برای مقایسه">
-											<span class="far fa-arrows-repeat" style="transform: rotate(0);">
-											</span>
-										</a>
+										</button>
+									</form>
 									</div>
 								</div>
 							</div>

@@ -56,6 +56,7 @@ namespace AlphaShop.Infrastructure.Services
                 return false;
 
             }
+
             var currentUserId = _contextAccessor.HttpContext.User?.FindFirst(ClaimTypes.NameIdentifier).Value;
             if (currentUserId == userId)
             {

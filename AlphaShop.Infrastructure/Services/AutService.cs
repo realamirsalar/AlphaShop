@@ -10,13 +10,11 @@ namespace AlphaShop.Infrastructure.Services
     public class AutService : IAutService
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public AutService(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager)
+        public AutService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
-            _roleManager = roleManager;
             _signInManager = signInManager;
         }
 

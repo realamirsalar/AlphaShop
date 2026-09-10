@@ -26,6 +26,8 @@ namespace AlphaShop.Infrastructure
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IGalleryRepository, GalleryRepository>();
+            services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
+            services.AddScoped<IOrderHeaderRepository, OrderHeaderRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAutService, AutService>();
             services.AddScoped<IAdminUserService, AdminUserService>();
