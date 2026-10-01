@@ -1,6 +1,8 @@
-﻿using AlphaShop.Application.Common.Interfaces;
+﻿using AlphaShop.Application.Common.DTOs;
+using AlphaShop.Application.Common.Interfaces;
 using AlphaShop.Application.Services.Interfaces;
 using AlphaShop.Domain.Entities;
+using AlphaShop.Web.ViewModels.Shopping;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -52,7 +54,42 @@ namespace AlphaShop.Web.Controllers
             _shoppingCartService.AddShoppingCart(cart);
             return RedirectToAction(nameof(Index));
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Remove(int cartId)
+        {
+            var result = _shoppingCartService.RemoveShoppingCart(cartId);
+            if (!result)
+            {
+                return RedirectToAction(nameof(NotFound));
+            }
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Plus(int cartId)
+        {
+            var result = _shoppingCartService.Plus(cartId);
+            if (result)
+            {
 
+                return RedirectToAction(nameof(Index));
+            }
+            return RedirectToAction(nameof(NotFound));
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Minus(int cartId)
+        {
+            var result = _shoppingCartService.Minus(cartId);
+            if (result)
+            {
+
+                return RedirectToAction(nameof(Index));
+            }
+            return RedirectToAction(nameof(NotFound));
+        }
+       
         public IActionResult NotFound()
         {
             return View();

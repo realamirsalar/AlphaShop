@@ -40,6 +40,9 @@ builder.Services.AddApplicationServices();
 
 builder.Services.AddAutoMapper(cfg => { }, typeof(MappingProfile).Assembly);
 
+
+builder.Services.AddHttpClient();
+
 var app = builder.Build();
 
 await SeedDatabase();

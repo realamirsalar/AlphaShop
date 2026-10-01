@@ -10,5 +10,10 @@ namespace AlphaShop.Application.Services.Interfaces
         List<ShoppingCart> GetAllShoppingCarts(string userId);
 
         void AddShoppingCart(ShoppingCart shoppingCart);
+        bool RemoveShoppingCart(int cartId);
+        ShoppingCart GetById(int id);
+        bool Plus(int id);
+        bool Minus(int id);
+        void DeleteAllShoppingCart(string userId);
     }
 }

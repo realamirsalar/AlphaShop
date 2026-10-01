@@ -1,4 +1,7 @@
 ﻿@model List<ShoppingCart>
+@{
+	int sum = 0;
+}
 	<!-- breadcrumb -->
 	<div class="site-breadcrumb">
 		<div class="site-breadcrumb-bg" style="background: url(assets/img/breadcrumb/01.jpg)">
@@ -83,15 +86,22 @@
 											</td>
 											<td>
 												<div class="shop-cart-qty">
-													<button class="minus-btn">
-														<i class="fal fa-minus">
-														</i>
-													</button>
+													<form class="d-inline" asp-action="Minus">
+														<input type="hidden" name="cartId" value="@item.Id" />
+														<button type="submit" class="">
+															<i class="fal fa-minus">
+															</i>
+														</button>
+													</form>
 													<input class="quantity" disabled="" type="text" value="@item.Count">
-													<button class="plus-btn">
-														<i class="fal fa-plus">
-														</i>
-													</button>
+													<form class="d-inline" asp-action="Plus">
+														<input type="hidden" name="cartId" value="@item.Id" />
+														<button type="submit" class="">
+															<i class="fal fa-plus">
+															</i>
+														</button>
+													</form>
+													
 												</div>
 											</td>
 											<td>
@@ -102,12 +112,17 @@
 												</div>
 											</td>
 											<td>
-												<a class="shop-cart-remove" href="#">
-													<i class="far fa-times">
-													</i>
-												</a>
+												<form asp-action="Remove">
+													<input type="hidden" name="cartId" value="@item.Id" />
+													<button class="shop-cart-remove" type="submit">
+														<i class="far fa-times">
+														</i>
+													</button>
+												</form>
+												
 											</td>
 										</tr>
+										@(sum += (item.Product.Price * item.Count))
 									}
 								</tbody>
 								</table>
@@ -127,7 +142,7 @@
 								</div>
 								<div class="col-md-5 col-lg-6">
 									<div class="shop-cart-btn text-md-end">
-										<a class="theme-btn" href="#">
+										<a class="theme-btn" asp-controller="Home" asp-action="Products">
 											<span class="fas fa-arrow-right" style="transform: rotate(0);">
 											</span>
 											به خرید ادامه دهید
@@ -148,17 +163,10 @@
 										مجموع ناخالص:
 									</strong>
 									<span>
-										$4,500.00
+										@sum.ToString("N0")
 									</span>
 								</li>
-								<li>
-									<strong>
-										تخفیف:
-									</strong>
-									<span>
-										$5.00
-									</span>
-								</li>
+								
 								<li>
 									<strong>
 										حمل و نقل:
@@ -167,26 +175,19 @@
 										رایگان
 									</span>
 								</li>
-								<li>
-									<strong>
-										مالیات:
-									</strong>
-									<span>
-										$25.00
-									</span>
-								</li>
+								
 								<li class="shop-cart-total">
 									<strong>
 										مجموع:
 									</strong>
-									<span>
-										$4,520.00
+								<span>
+									@sum.ToString("N0")
 									</span>
 								</li>
 							</ul>
 							<div class="text-end mt-40">
-								<a class="theme-btn" href="#">
-									اکنون پرداخت کنید
+								<a class="theme-btn" asp-controller="Order" asp-action="AddAddress">
+									تکمیل سفارش
 									<i class="fas fa-arrow-left">
 									</i>
 								</a>

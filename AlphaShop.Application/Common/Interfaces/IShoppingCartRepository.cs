@@ -8,5 +8,6 @@ namespace AlphaShop.Application.Common.Interfaces
     public interface IShoppingCartRepository : IRepository<ShoppingCart>
     {
         void Update(ShoppingCart shoppingCart);
+        void DeleteRange(List<ShoppingCart> carts);
     }
 }

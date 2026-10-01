@@ -1,0 +1,91 @@
+﻿@model OrderHeader
+<div class="container-xl px-4 mt-4 is-rtl">
+
+    <div class="card invoice">
+        <div class="card-header p-4 p-md-5 border-bottom-0 bg-gradient-primary-to-secondary text-white-50">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-12 col-lg-auto mb-5 mb-lg-0 text-center text-lg-start">
+
+                    <img class="invoice-brand-img rounded-circle mb-4" src="../assets/img/profile-3.jpg" alt="">
+                    <div class="h2 text-white mb-0">@Model.ApplicationUser.Name</div>
+                    @Model.ApplicationUser.PhoneNumber
+                </div>
+                <div class="col-12 col-lg-auto text-center text-lg-end">
+                    <!-- Invoice details-->
+                    <div class="h3 text-white">فاکتور</div>
+                    #@Model.Id
+                    <br>
+                    @Model.OrderDate.ToIranPersianDateString()
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-4 p-md-5">
+            <!-- Invoice table-->
+            <div class="table-responsive">
+                <table class="table table-borderless mb-0">
+                    <thead class="border-bottom">
+                        <tr class="small text-uppercase text-muted">
+                            <th class="text-end col-3" scope="col">تصویر</th>
+                            <th class="text-end" scope="col">نام محصول</th>
+                            <th class="text-end" scope="col">تعداد</th>
+                            <th class="text-end" scope="col">قیمت هر عدد</th>
+                            <th class="text-end" scope="col">کل</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Invoice item 1-->
+                        @foreach(var item in Model.OrderDetails)
+                        {
+                            <tr class="border-bottom">
+                              
+                                <td class="text-end fw-bold"><img src="@item.Product.ImageUrl" /></td>
+                                <td class="text-end fw-bold">@item.Product.Name</td>
+                                <td class="text-end fw-bold">@item.Count</td>
+                                <td class="text-end fw-bold">@item.Price.ToString("N0") تومان</td>
+                                <td class="text-end fw-bold">@((item.Count * item.Price).ToString("N0"))</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td class="text-end pb-0" colspan="3"><div class="text-uppercase small fw-700 text-muted">جمع فاکتور:</div></td>
+                            <td class="text-end pb-0"><div class="h5 mb-0 fw-700">@Model.OrderTotal.ToString("N0") تومان</div></td>
+                        </tr>
+                        
+                        <!-- Invoice total-->
+                        <tr>
+                            <td class="text-end pb-0" colspan="3"><div class="text-uppercase small fw-700 text-muted">مبلغ کل:</div></td>
+                            <td class="text-end pb-0"><div class="h5 mb-0 fw-700 text-green">@Model.OrderTotal.ToString("N0") تومان</div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer p-4 p-lg-5 border-top-0">
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <!-- Invoice - sent to info-->
+                    <div class="small text-muted text-uppercase fw-700 mb-2">اطلاعات خریدار</div>
+                    <div class="h6 mb-1">نام خریدار : @Model.ApplicationUser.Name</div>
+                    <div class="h6 mb-1">شماره تماس : @Model.ApplicationUser.PhoneNumber</div>
+                    <div class="h6 mb-1">استان : @Model.State</div>
+                    <div class="h6 mb-1">شهرستان : @Model.State</div>
+                    <div class="h6 mb-1">کد پستی : @Model.State</div>
+                    <div class="h6 mb-1 text-danger">کد پیگری مرسوله : @(Model.RefPostId ?? "هنوز کد مرسوله ای ثبت نشده است")</div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <!-- Invoice - sent from info-->
+                    <div class="small text-muted text-uppercase fw-700 mb-2">اطلاعات پرداخت</div>
+                    <div class="h6 mb-0">تاریخ پرداخت : @Model.PaymentDate.ToIranPersianDateString()</div>
+                    <div class="h6 mb-0">درگاه : @Model.PaymentGateway</div>
+                    <div class="h6 mb-0 text-warning">وصعیت سفارش : @Model.OrderStatus</div>
+                    <div class="h6 mb-0 text-primary">وصعیت پرداخت : @Model.PaymentStatus</div>
+                    <div class="h6 mb-0 text-primary">کد پیگیری : @Model.RefId</div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Invoice - additional notes-->
+                    <div class="small text-muted text-uppercase fw-700 mb-2">آدرس دقیق</div>
+                    <div class="small mb-0">@Model.StreetAddress</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

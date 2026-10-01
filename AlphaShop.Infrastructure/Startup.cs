@@ -31,6 +31,8 @@ namespace AlphaShop.Infrastructure
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAutService, AutService>();
             services.AddScoped<IAdminUserService, AdminUserService>();
+            services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
             services.AddScoped<IDbInitializer , DbInitializer>();
 
             services.AddScoped<IFileService, FileService>();

@@ -21,5 +21,9 @@ namespace AlphaShop.Infrastructure.Contract.Repositories
         {
             _db.Update(shoppingCart);
         }
+        public void DeleteRange(List<ShoppingCart> carts)
+        {
+            _db.ShoppingCarts.RemoveRange(carts);
+        }
     }
 }

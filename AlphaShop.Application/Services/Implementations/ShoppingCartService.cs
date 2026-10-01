@@ -33,11 +33,72 @@ namespace AlphaShop.Application.Services.Implementations
             _unitOfWork.Save();
         }
 
+        public void DeleteAllShoppingCart(string userId)
+        {
+            var carts = _ShopRepo.GetAll(c => c.ApplicationUserId == userId).ToList();
+            if(carts.Count > 0)
+            {
+                _ShopRepo.DeleteRange(carts);
+            }
+        }
+
         public List<ShoppingCart> GetAllShoppingCarts(string userId)
         {
             var carts = _ShopRepo.GetAll(s => s.ApplicationUserId == userId,includeProperties: "Product");
 
             return carts.ToList();
+        }
+
+        public ShoppingCart GetById(int id)
+        {
+            return _ShopRepo.Get(s => s.Id == id, includeProperties: "Product");
+        }
+
+        public bool Minus(int id)
+        {
+            var cart = GetById(id);
+            if (cart != null && cart.Count > 0)
+            {
+                cart.Count--;
+                if(cart.Count == 0)
+                {
+                    _ShopRepo.Remove(cart);
+                }
+                else
+                {
+                _ShopRepo.Update(cart);
+                }
+                _unitOfWork.Save();
+                return true;
+
+            }
+            return false;
+        }
+
+        public bool Plus(int id)
+        {
+            var cart = GetById(id);
+            if (cart != null && cart.Count < cart.Product.Quntity)
+            {
+                cart.Count++;
+                _ShopRepo.Update(cart);
+                _unitOfWork.Save();
+                return true;
+
+            }
+            return false;
+        }
+
+        public bool RemoveShoppingCart(int cartId)
+        {
+            var cart = _ShopRepo.Get(c => c.Id == cartId);
+            if (cart == null)
+            {
+                return false;
+            }
+            _ShopRepo.Remove(cart);
+            _unitOfWork.Save();
+            return true;
         }
     }
 }
