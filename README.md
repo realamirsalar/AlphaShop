@@ -1,6 +1,5 @@
 🛒 AlphaShop
 
-
 [Persian (فارسی)](#-فارسی) | [English](#-english)
 
 ---
@@ -53,7 +52,8 @@ UI Tools: Simple DataTables, SweetAlert (for custom notifications)
 
 ---
 
-## 🇮🇷 
+## 🇮🇷 فارسی
+
 
 یک فروشگاه اینترنتی جامع، استاندارد و توسعه‌یافته با استفاده از فریم‌ورک ASP.NET Core MVC و Clean Architecture (معماری تمیز). این پروژه تمامی نیازهای یک سیستم تجارت الکترونیک (E-Commerce) مدرن و بومی‌سازی‌شده برای کاربران ایرانی را برآورده می‌کند.
 
